@@ -1,0 +1,65 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[,] matriz = new int[5, 5];
+        Console.WriteLine("Informe 25 elementos:");
+
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                Console.WriteLine("Informe o elemento " + i + " X " + j);
+                matriz[i, j] = int.Parse(Console.ReadLine());
+
+            }
+        }
+
+        int negativo = 0, soma = 0, primo = 0;
+        Console.WriteLine("A matriz impressa:");
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                Console.Write(" " + matriz[i, j]);
+
+                if (matriz[i, j] < 0)
+                {
+                    negativo++;
+                }
+                else
+                {
+                    soma += matriz[i, j];
+                }
+
+                if (verificaPrimo(matriz[i, j]))
+                {
+                    primo += matriz[i, j];
+                }
+            }
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Quantidade de números negativos: " + negativo);
+        Console.WriteLine("Soma dos positivos: " + soma);
+        Console.WriteLine("Soma dos primos: " + primo);
+    }
+
+    static bool verificaPrimo(int num)
+    {
+        if (num > 1)
+        {
+            for (int i = 2; i <= Math.Sqrt(num); i++)
+            {
+                if (num % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+}

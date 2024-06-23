@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[,] matriz = new int[10, 10]; 
+        Console.WriteLine("Informe 100 elementos:");
+
+        Random rand = new Random(); 
+
+        for (int i = 0; i < 10; i++)  
+        {
+            for (int j = 0; j < 10; j++) 
+            {
+                matriz[i, j] = rand.Next(1, 101);
+            }
+        }
+
+        int contPrinc = 0, contSec = 0;
+        float mediaPrinc = 0, mediaSec = 0;
+        Console.WriteLine("A matriz impressa: ");
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (i == j)
+                {
+                    mediaPrinc += matriz[i, j];
+                    contPrinc++;
+                }
+
+                if (i + j == 9)
+                {
+                    mediaSec += matriz[i, j];
+                    contSec++;
+                }
+
+                Console.Write(" " + matriz[i, j]);
+            }
+            Console.WriteLine();
+        }
+        mediaPrinc /= contPrinc;
+        mediaSec /= contSec;
+        Console.WriteLine("Média da diagonal principal: " + mediaPrinc);
+        Console.WriteLine("Média da diagonal secundária: " + mediaSec);
+    }
+}
